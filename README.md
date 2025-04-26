@@ -1,72 +1,90 @@
 # Baymax
 
-A project with a FastAPI backend and React/Expo frontend. The backend utilizes LangGraph with endpoints formatted for Vercel AI SDK, so that we can stream the response in the chat.
+A project combining a FastAPI backend with a React/Expo frontend. The backend uses LangGraph and formats endpoints for the Vercel AI SDK to enable streaming chat responses.
+
+**Note:** You need to configure your OpenAI API key. You can either set it up in a `.env` file in the backend directory or have it configured in your shell environment (e.g., `~/.bashrc`).
 
 ## API Routes
 
-The FastAPI backend currently has two routes:
-- A basic route that only uses the OpenAI API (not used in the app anymore)
-- A route using LangGraph (currently needs refactoring as I just vibe coded it)
+The FastAPI backend provides the following routes:
+- `/openai/`: A basic route using only the OpenAI API (deprecated).
+- `/langgraph/`: The main route utilizing LangGraph for advanced chat functionality (requires refactoring).
 
 ## Demo
 
-
 <!-- HTML video embed for better compatibility -->
 <video width="640" height="360" controls>
-  <source src="demo.mp4" type="video/mp4">
+  <source src="https://cdn.discordapp.com/attachments/1355008905553641565/1363157967704293376/2025-04-19_11-22-08.mp4?ex=680d9509&is=680c4389&hm=0104aa019bbcdab7d39c34bfbe53a4472a8d43dd1e702477a5ad61c6b8e16507&" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ## Setup and Running
 
-### Backend Setup
+Follow these steps to set up and run the project: Run both servers in separate terminals at the same time.
 
-1. Navigate to the backend directory:
-   ```bash
-   cd baymax-backend
-   ```
+### Backend (`baymax-backend/`)
 
-2. Install Poetry (if not already installed):
-   ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
+1.  **Navigate to the backend directory:**
+    ```bash
+    cd baymax-backend
+    ```
 
-3. Install dependencies:
-   ```bash
-   poetry install
-   ```
+2.  **Install Poetry** (if you haven't already):
+    ```bash
+    curl -sSL https://install.python-poetry.org | python3 -
+    ```
 
-4. Run the backend server:
-   ```bash
-   # Using Poetry to run the server
-   poetry run uvicorn src.baymax_backend.app:app --reload
+3.  **Create and configure the `.env` file:**
+    Create a file named `.env` in the `baymax-backend` directory and add your OpenAI API key:
+    ```env
+    OPENAI_API_KEY="your_openai_api_key_here"
+    ```
+    *(Alternatively, ensure `OPENAI_API_KEY` is set as an environment variable in your shell.)*
+
+4.  **Install dependencies:**
+    ```bash
+    poetry install
+    ```
+
+5.  **Activate the virtual environment:**
+    ```bash
+    poetry env activate
+    ``` 
    
-   # Alternative: Activate the virtual environment and run directly app.py
-   ```
 
-### Frontend Setup
+6.  **Run the backend server:**
+    ```bash
+    poetry run uvicorn src.baymax_backend.app:app --reload
+    ```
+    The API will be available at `http://127.0.0.1:8000`.
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd baymax_frontend
-   ```
+### Frontend (`baymax_frontend/`)
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+1.  **Navigate to the frontend directory:**
+    ```bash
+    # Make sure you are in the project root before running this
+    cd baymax_frontend 
+    ```
+    *(If you are already in the `baymax-backend` directory, use `cd ../baymax_frontend`)*
 
-3. Start the frontend development server:
-   ```bash
-   npm run start
-   ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-4. Press `w` to open the web version of the app. Or use expo go to scan the QR code and open the app on your phone.
+3.  **Start the development server:**
+    ```bash
+    npm run start
+    ```
+
+4.  **Open the app:**
+    - Press `w` in the terminal to open the web version in your browser.
+    - Alternatively, scan the QR code using the Expo Go app on your mobile device.
 
 ## Project Structure
 
-- `baymax-backend/`: FastAPI backend with LangGraph integration
-- `baymax_frontend/`: React/Expo frontend application
+-   `baymax-backend/`: Contains the FastAPI backend code, including LangGraph integration.
+-   `baymax_frontend/`: Contains the React/Expo frontend application code.
 
 
 
