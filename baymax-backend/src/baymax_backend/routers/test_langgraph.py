@@ -69,11 +69,13 @@ graph = graph.compile()
 async def stream_to_vercel_ai_protocol(stream) -> AsyncGenerator[str, None]:
     """Transform an OpenAI stream to Vercel AI SDK protocol format"""
     for chunk in stream:
-        if chunk.choices[0].delta.content:
-            yield f"0:{json.dumps(chunk.choices[0].delta.content)}\n"
+        for choice in chunk.choices:
+            if choice.delta.content is not None:
+                yield f"0:{json.dumps(choice.delta.content)}\n"
 
-    # Final token with stop reason
-    yield f'e:{{"finishReason":"stop","usage":null,"isContinued":false}}\n'
+        # If it's the final chunk with usage info
+        if hasattr(chunk, "usage") and chunk.usage:
+            yield f'e:{{"finishReason":"stop","usage":{{"promptTokens":{chunk.usage.prompt_tokens},"completionTokens":{chunk.usage.completion_tokens}}},"isContinued":false}}\n'
 
 # FastAPI request model
 class Message(BaseModel):

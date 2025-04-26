@@ -54,7 +54,7 @@ Follow these steps to set up and run the project: Run both servers in separate t
 
 6.  **Run the backend server:**
     ```bash
-    poetry run uvicorn src.baymax_backend.app:app --reload
+    poetry run uvicorn src.baymax_backend.app:app --host 0.0.0.0 --port 8000 --reload
     ```
     The API will be available at `http://127.0.0.1:8000`.
 
@@ -79,7 +79,7 @@ Follow these steps to set up and run the project: Run both servers in separate t
 
 4.  **Open the app:**
     - Press `w` in the terminal to open the web version in your browser.
-    - Alternatively, scan the QR code using the Expo Go app on your mobile device.
+    - Alternatively, scan the QR code using the Expo Go app on your mobile device. (**for this, you need to setup your computer's local IP address in the util.ts file**)
 
 ## Project Structure
 
