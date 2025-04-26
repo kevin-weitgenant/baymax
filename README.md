@@ -6,17 +6,11 @@ A project combining a FastAPI backend with a React/Expo frontend. The backend us
 
 ## API Routes
 
-The FastAPI backend provides the following routes:
-- `/openai/`: A basic route using only the OpenAI API (deprecated).
-- `/langgraph/`: The main route utilizing LangGraph for advanced chat functionality (requires refactoring).
+The FastAPI backend provides the routes in these files:
+- `chat.py`: A basic route using only the OpenAI API (deprecated).
+- `test_langgraph.py`: The main route utilizing LangGraph (requires refactoring, I just vibe coded it).
 
-## Demo
 
-<!-- HTML video embed for better compatibility -->
-<video width="640" height="360" controls>
-  <source src="https://cdn.discordapp.com/attachments/1355008905553641565/1363157967704293376/2025-04-19_11-22-08.mp4?ex=680d9509&is=680c4389&hm=0104aa019bbcdab7d39c34bfbe53a4472a8d43dd1e702477a5ad61c6b8e16507&" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
 ## Setup and Running
 
