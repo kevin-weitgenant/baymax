@@ -1,13 +1,13 @@
 # Baymax
 
-A project combining a FastAPI backend with a React/Expo frontend. The backend uses LangGraph and formats endpoints for the Vercel AI SDK to enable streaming chat responses.
+A project combining a FastAPI backend with a React/Expo frontend. The backend streams open ai LLM response and formats endpoints for the Vercel AI SDK to enable streaming chat responses.
 
 **Note:** You need to configure your OpenAI API key. You can either set it up in a `.env` file in the backend directory or have it configured in your shell environment (e.g., `~/.bashrc`).
 
 ## API Routes
 
 The FastAPI backend provides the routes in these files:
-- `chat.py`: A basic route using only the OpenAI API (deprecated).
+- `chat.py`: A basic route using only the OpenAI API 
 
 
 ## Setup and Running
