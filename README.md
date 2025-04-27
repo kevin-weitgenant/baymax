@@ -8,8 +8,6 @@ A project combining a FastAPI backend with a React/Expo frontend. The backend us
 
 The FastAPI backend provides the routes in these files:
 - `chat.py`: A basic route using only the OpenAI API (deprecated).
-- `test_langgraph.py`: The main route utilizing LangGraph (requires refactoring, I just vibe coded it).
-
 
 
 ## Setup and Running

@@ -3,8 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 
-# from baymax_backend.routers.chat import router as chat_router
-from baymax_backend.routers.test_langgraph import router as langgraph_router
+from baymax_backend.routers.chat import router as chat_router
 # Load environment variables
 load_dotenv()
 
@@ -29,8 +28,7 @@ app.add_middleware(
 )
 
 # Include routers
-# app.include_router(chat_router)
-app.include_router(langgraph_router)
+app.include_router(chat_router)
 
 @app.get("/")
 async def read_root():
